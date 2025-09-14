@@ -112,23 +112,10 @@ All data directories are configured with `.gitignore` to prevent accidental comm
 - uv package manager
 - just task runner
 
-### Python Dependencies (`pyproject.toml`)
+### Running Python
 
-- **Development**: pytest, ruff, ty, jupyter
-- **Data Science**: pandas, numpy, matplotlib, seaborn, scikit-learn
-- **Local**: local_funcs package (workspace member)
-
-### Workspace Configuration
-
-The project uses uv workspace to manage the local `local_funcs` package:
-
-```toml
-[tool.uv.workspace]
-members = ["src/local_funcs"]
-
-[tool.uv.sources]
-local-funcs = { workspace = true, editable = true }
-```
+Python dependencies are managed by `uv`.
+To run Python code, you need to use `uv run ...` instead of `python ...`.
 
 ## Development Dependencies
 

@@ -50,4 +50,3 @@ jobs:
         uv --version
         just --version
         python --version
-        python -c "import local_funcs; print(local_funcs.hello())"
