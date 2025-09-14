@@ -20,7 +20,7 @@ jobs:
         environment-file: environment.yml
         activate-environment: python-datascience-template
         auto-activate-base: false
-        miniforge-variant: Mambaforge
+        miniforge-variant: Miniforge3
         use-mamba: true
 
     - name: Install Python dependencies
