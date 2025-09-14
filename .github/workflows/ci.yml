@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Miniconda
+      uses: conda-incubator/setup-miniconda@v3
+      with:
+        environment-file: environment.yml
+        activate-environment: python-datascience-template
+        auto-activate-base: false
+        miniforge-variant: Mambaforge
+        use-mamba: true
+
+    - name: Install Python dependencies
+      shell: bash -el {0}
+      run: |
+        conda info
+        conda list
+        just setup
+
+    - name: Test hello script
+      shell: bash -el {0}
+      run: |
+        echo "Running hello world script..."
+        just hello
+
+    - name: Run format, lint, and test
+      shell: bash -el {0}
+      run: |
+        echo "Running format, lint, and test..."
+        just fmt lint test
+
+    - name: Verify installation
+      shell: bash -el {0}
+      run: |
+        echo "Verifying environment..."
+        conda info
+        uv --version
+        just --version
+        python --version
+        python -c "import local_funcs; print(local_funcs.hello())"
