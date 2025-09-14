@@ -1,0 +1,11 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "local-funcs"
+version = "0.1.0"
+description = "Local utility functions for data science project"
+requires-python = ">=3.13"
+dependencies = []
+

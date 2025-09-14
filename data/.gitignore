@@ -1,0 +1,11 @@
+# Ignore everything in data directories
+*
+
+# Allow .gitignore files themselves
+!.gitignore
+
+# Allow subdirectory structure
+!artifacts/
+!raw/
+!intermediate/
+!tmp/

@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "python-datascience-template"
+version = "0.1.0"
+description = "A Python data science project template"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pandas",
+    "numpy",
+    "matplotlib",
+    "seaborn",
+    "scikit-learn",
+    "local-funcs",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+    "ruff>=0.13.0",
+    "ty>=0.0.1a20",
+    "jupyter",
+    "ipykernel",
+]
+
+[tool.ruff]
+extend-exclude = ["docs", "notebooks", "data"]
+
+[tool.ty]
+rules = { call-non-callable = "ignore" }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/local_funcs"]
+
+[tool.uv.workspace]
+members = [
+    "src/local_funcs",
+]
+
+[tool.uv.sources]
+local-funcs = { workspace = true, editable = true }
